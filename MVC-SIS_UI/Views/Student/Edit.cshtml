@@ -1,0 +1,32 @@
+﻿@model MVC_SIS_UI.Models.EditStudentVM
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Edit Student</h3>
+        @Html.ActionLink("Return to List", "List", "Student")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(m => m.Student.StudentId)
+            @Html.ValidationSummary()
+        <div class="form-group">
+            <label>Student</label>
+            @Html.TextBoxFor(m => m.Student.FirstName, new { @class = "form-control", placeholder = "First Name" })
+            @Html.TextBoxFor(m => m.Student.LastName, new { @class = "form-control", placeholder = "Last Name" })
+            @Html.TextBoxFor(m => m.Student.GPA, new { @class = "form-control", placeholder = "GPA" })
+            @Html.ListBoxFor(m => m.Student.Major, Model.MajorItems, new { @class = "form-control", placeholder = "Major" })
+            @Html.ListBoxFor(m => m.Student.Courses, Model.CourseItems, new { @class = "form-control", placeholder = "Courses" })
+            @Html.TextBoxFor(m => m.Student.Address, new { @class = "form-control", placeholder = "Address" })
+
+        </div>
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+        }
+    </div>
+</div>
